@@ -1,0 +1,7 @@
+# Values here will override previously loaded from settings.toml
+
+[development]                    # All [environments] inherits values from [default] if defined
+profile = "dev"
+db__port = 8181                  # to merge in value to existing dict, use `__` double underscore lookup.
+    [development.api]
+    url = "http://httpbin.org/get"

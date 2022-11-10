@@ -1,0 +1,19 @@
+# IntelliJ IDE
+.idea
+*.iml
+.DS_Store
+
+# Package
+*.lock
+**/.secrets.toml
+**/__pycache__
+
+# Build
+.mypy_cache
+.pytest_cache
+.nox
+.coverage
+.testmondata
+.reports
+.aws
+dist

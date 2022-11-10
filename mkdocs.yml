@@ -1,0 +1,98 @@
+# Set strict to true to turn warnings into errors to catch warnings within CI.
+strict: false
+theme:
+  name: material
+  # By default, fonts are pulled from Google on the Internet. To support offline usage, this is
+  # disabled.
+  font: true
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: deep purple
+    accent: deep purple
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: black
+    accent: lime
+    toggle:
+      icon: material/weather-night
+      name: Switch to light mode
+  icon:
+    logo: material/currency-sign
+    # GitHub specific.
+    repo: fontawesome/brands/github
+  favicon: material/library
+  features:
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+markdown_extensions:
+  - toc:
+      permalink: "¤"
+  - admonition
+  - pymdownx.keys
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - md_in_html
+extra_css:
+  - static/stylesheets/extra.css
+extra:
+  homepage: https://www.semicolon.au/
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ammar-khan/viper-boot.git
+# This is needed to allow links to work when opened from the file system.
+use_directory_urls: false
+plugins:
+  - autorefs
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          option:
+            show_if_no_docstring: true
+            show_signature_annotations: true
+  # Autodoc configuration.
+  # https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages
+  - gen-files:
+      scripts:
+        - docs/generate_docs.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+watch:
+  - "./"
+  # This plugin is used to validate URLs (including some anchors).
+  # Uncomment to build the docs with this validation enabled.
+  # This is commented out by default because this requires network I/O to validate URLs, so it is
+  # inherently not exactly reproducible. But this plugin is none-the-less helpful at detecting
+  # incorrect URLs.
+  #- htmlproofer:
+  #    raise_error: True
+site_name: viper-boot
+copyright: Copyright &copy; 2018-2022 Semicolon Australia
+# GitHub Specific Configuration.
+repo_name: viper-boot
+repo_url: https://github.com/ammar-khan/viper-boot.git
+edit_uri: edit/master/docs/user_guide/docs/
+nav:
+- Home:
+  - Overview: index.md
+  - Changelog: changelog.md
+  - License: license.md
+- Usage:
+  - Package: usage.md
+  - xdoctest: xdoctest.md
+# defer to gen-files + literate-nav
+- Code Reference: reference/
+- Development:
+  - Contribute: contribute.md
+- Author's website: https://www.semicolon.au/

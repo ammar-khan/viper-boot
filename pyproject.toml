@@ -1,0 +1,352 @@
+# Basic configuration
+# -------------------
+[tool.poetry]
+name = "viper-boot"
+version = "0.0.1"
+description = "Viper Boot API."
+authors = ["Semicolon Australia"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://www.semicolon.au"
+repository = "https://github.com/ammar-khan/viper-boot"
+documentation = ""
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Typing :: Typed",
+    # Include this classifier to prevent accidently publishing private code to PyPI.
+    # @see https://pypi.org/classifiers/
+    "Private :: Do Not Upload",
+]
+
+packages = [{include = "viper_boot", from = "src"}]
+
+
+
+
+[tool.poetry.scripts]
+viper-boot = "viper_boot.__main__:main"
+
+
+
+
+# Runtime dependencies
+# --------------------
+[tool.poetry.dependencies]
+python = "^3.8, <3.11"      # Constraining the upper bound
+dynaconf = ">=3.1.11"       # Load config dynamically. @see https://pypi.org/project/dynaconf
+Pygments = ">=2.10.0"       # Generic syntax highlighter. @see https://pygments.org/docs
+click = ">=8.0.1"           # Command line interface. @see https://click.palletsprojects.com
+marshmallow = "^3.18.0"     # ORM/ODM/framework-agnostic library for converting complex datatypes,
+                            # such as objects, to and from native Python datatypes.
+boto3 = ">=1.24.82"         # AWS SDK for Python
+
+apispec = { version = ">=5.2.2", extras = ["yaml, validation"] }  # Open API Specs
+jinja2 = ">=3.1.2"          # HTML Templating engine
+scalpl = "0.4.2"            # Nested dictionary operations. @see https://pypi.org/project/scalpl
+
+
+
+
+# Development dependencies
+# ------------------------
+[tool.poetry.group.dev.dependencies]
+
+nox-poetry = "^1.0.1"       # Automate build tasks. @see https://github.com/cjolowicz/nox-poetry
+commitizen = ">=2.35.0"     # Enforce conventional commits rules. @see https://pypi.org/project/commitizen
+
+pre-commit = ">=2.20.0"     # Precommit hooks. @see https://pypi.org/project/pre-commit
+pre-commit-hooks = ">=4.3.0"# Precommit hooks. @see https://pypi.org/project/pre-commit-hooks
+
+mypy = ">=0.931"            # (PEP484) Type checks. @see http://mypy-lang.org
+# As of mypy 0.900, mypy no longer bundles the stubs for third-party libraries that reside
+# in the typeshed project. Add these "types-" packages here if you depend on them in
+# requirements.in (e.g. types-requests).
+# @see http://mypy-lang.blogspot.com/2021/06/mypy-0900-released.html
+# @see https://github.com/python/typeshed/tree/master/stubs
+typeguard = ">=2.13.3"      # (PEP484) Type checks. @see https://typeguard.readthedocs.io/en/latest
+pep8-naming = ">=0.12.1"    # (PEP8) Naming checks. @see https://pypi.org/project/pep8-naming
+
+pylint= ">=2.15.3"          # Style guide checks. @see https://pypi.org/project/pylint
+flake8 = ">=4.0.1"          # Style guide checks. @see https://flake8.pycqa.org
+flake8-bugbear = ">=21.9.2" # Style guide checks. @see https://pypi.org/project/flake8-bugbear
+flake8-broken-line = ">=0.5.0" # Style guide checks. @see https://pypi.org/project/flake8-broken-line
+flake8-comprehensions = ">=3.10.0" # Style guide checks. @see https://pypi.org/project/flake8-comprehensions
+
+# TODO: Remove this when flake8 adds native support for pyproject.toml.
+pyproject-flake8 = ">=5.0.4.post1" # Style guide checks. @see https://pypi.org/project/pyproject-flake8
+darglint = ">=1.8.1"        # Style guide checks. @see https://pypi.org/project/darglint
+flake8-docstrings = ">=1.6.0" # Style guide checks. @see https://pypi.org/project/flake8-docstrings
+flake8-rst-docstrings = ">=0.2.5" # Style guide checks. @see https://pypi.org/project/flake8-rst-docstrings
+pycln = ">=2.1.1"           # Auto remove unused imports. @see https://pypi.org/project/pycln
+
+darker = ">=1.5.1"          # Format/sort and lint affected files only, @see https://pypi.org/project/darker
+
+bandit = { version = ">=1.7.4", extras = ["toml"] } # Security checks. @see https://pypi.org/project/flake8-bandit
+safety = ">=1.10.3"         # Security checks. @see https://pypi.org/project/safety/
+
+
+
+
+# Docs dependencies
+# ------------------------
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = ">=8.5.3" # Generate documentation. @see https://squidfunk.github.io/mkdocs-material
+mkdocs-htmlproofer-plugin = ">=0.8.0" # Validates URLs. @see https://github.com/manuzhang/mkdocs-htmlproofer-plugin
+mkdocstrings = { version = ">=0.19.0", extras = ["python"] } # Generate documentation. @see https://mkdocstrings.github.io
+mkdocs-gen-files = ">=0.4.0"# Generate documentation pages. @see https://pypi.org/project/mkdocs-gen-files
+mkdocs-literate-nav = ">=0.5.0" # Generate navigation. @see https://pypi.org/project/mkdocs-literate-nav
+
+# MkDocs has much better code reference then sphinx
+#furo = ">=2021.11.12"       # Sphinx documentation theme. @see https://pypi.org/project/furo/
+#sphinx = ">=4.3.2"          # Documentation generator. @see https://pypi.org/project/Sphinx/
+#sphinx-autobuild = ">=2021.3.14" # Rebuild Sphinx docs on changes. @see https://pypi.org/project/sphinx-autobuild
+#sphinx-click = ">=3.0.2"    # Click CLI support
+#myst-parser = ">=0.16.1"    # Rich & extensible Markdown @see https://pypi.org/project/myst-parser
+
+
+
+
+# Test dependencies
+# ------------------------
+[tool.poetry.group.test.dependencies]
+pytest = ">=6.2.5"          # Code test. @see https://docs.pytest.org
+pytest-randomly = ">=3.12.0" # Randomly order tests. @see https://pypi.org/project/pytest-randomly
+pytest-mock = ">=3.10.0" # Mock package. @see https://pypi.org/project/pytest-mock
+xdoctest = {extras = ["colors"], version = ">=0.15.10"} # Code test. @see https://docs.python.org/3/library/doctest.html
+pytest-picked = ">=0.4.6"   # Test only unstaged files. @see https://pypi.org/project/pytest-picked
+pytest-testmon = ">=1.3.7"  # Test affected only. @see https://pypi.org/project/pytest-testmon
+pytest-watch = ">=4.2.0"    # Run tests as file changed. @see https://pypi.org/project/pytest-watch
+coverage = {extras = ["toml"], version = ">=6.4.4"} # Code test coverage. @see https://pypi.org/project/coverage
+
+
+
+# Build dependencies
+# ------------------
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+
+# mypy configuration
+# --------------------
+[tool.mypy]
+strict = true
+# If certain strict config options are too pedantic for a project,
+# disable them selectively here by setting to false.
+warn_unreachable = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+ignore_missing_imports = true
+implicit_reexport = true
+disallow_untyped_calls = false
+strict_optional = false
+install_types = true
+non_interactive = true
+exclude = [
+    "noxfile\\.py"
+]
+
+
+# pylint configuration
+# --------------------
+[tool.pylint.messages_control]
+max-line-length = 79
+disable = [
+    "fixme",
+    "R0903",
+    "E1120",
+    "R1710",
+]
+
+[tool.pylint.design]
+# limiting the number of returns might discourage
+# the use of guard clauses. So we increase the
+# allowed number of returns from 6 to 8
+max-returns = 8
+
+
+
+# flake8 configuration
+# --------------------
+# Note: This configuration is suppported by pyproject-flake8.
+[tool.flake8]
+# Use the more relaxed max line length permitted in PEP 8.
+max-line-length = 79 # TODO: Set it globally if possible in TOML file
+# This ignore is required by black.
+extend-ignore = ["E203", "E902"]
+# flake8-bugbear config.
+# This argument is not needed if not using Typer as a dependency.
+extend-immutable-calls = ["Argument"]
+# TODO: Remove this once flake8 > 4.0.1 is released as this has been fixed
+#   upstream: https://github.com/PyCQA/flake8/pull/1443
+extend-exclude = [".nox"]
+exclude = ["*_test*", "tests/*"]
+per-file-ignores = """
+        __init__.py: F401
+"""
+# docstring-convention = "google"
+max-complexity = 10
+rst-roles = ["class", "const", "func" , "meth", "mod", "ref"]
+rst-directives = "deprecated"
+
+
+
+# black configuration
+# --------------------
+[tool.black]
+line-length = 79 # TODO: Set it globally if possible in TOML file
+target-version = ["py38", "py39", "py310"]
+# black will automatically exclude all files listed in .gitignore
+# If you need to exclude additional folders, consider using extend-exclude to avoid disabling the
+# default .gitignore behaviour.
+
+
+
+# isort configuration
+# --------------------
+[tool.isort]
+profile = "black"
+line_length = 79 # TODO: Set it globally if possible in TOML file
+force_sort_within_sections = true
+# Inform isort of paths to import names that should be considered part of the "First Party" group.
+src_paths = ["src/viper_boot"]
+skip_gitignore = true
+# If you need to skip/exclude folders, consider using skip_glob as that will allow the
+# isort defaults for skip to remain without the need to duplicate them.
+lines_after_imports = 2
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+
+
+
+# pycln configuration
+# --------------------
+[tool.pycln]
+all = true
+
+
+
+# autopep8 configuration
+# --------------------
+[tool.autopep8]
+max_line_length = 120
+ignore = "E501,W6"  # or ["E501", "W6"]
+in-place = true
+recursive = true
+aggressive = 3
+
+
+
+# pytest configuration
+# --------------------
+[tool.pytest.ini_options]
+filterwarnings = [
+    # When running tests, treat warnings as errors (e.g. -Werror).
+    # See: https://docs.pytest.org/en/latest/reference/reference.html#confval-filterwarnings
+    "error",
+    # Add additional warning supressions as needed here. For example, if a third-party library
+    # is throwing a deprecation warning that needs to be fixed upstream:
+    # "ignore::DeprecationWarning:typer",
+]
+
+
+
+# coverage configuration
+# --------------------
+[tool.coverage.run]
+branch = true
+source = ["src/viper_boot/."]
+disable_warnings = ["no-data-collected"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+omit = [
+    "src/*/__init__.py",
+    "src/*/examples/*",
+    "src/*/__main__.py",
+    "tests/__init__.py",
+    "src/*/openapi_docs/*",
+]
+
+
+
+# darglint configuration
+# --------------------
+[tool.darglint]
+strictness = "long"
+
+
+
+# darker configuration
+# --------------------
+[tool.darker]
+src = [
+    "src/viper_boot",
+]
+revision = "master"
+diff = true
+check = true
+isort = true
+lint = [
+    "pylint",
+    "mypy",
+    "pflake8",
+    "cov_to_lint.py",
+]
+log_level = "INFO"
+color = true
+
+
+
+# bandit configuration
+# --------------------
+[tool.bandit]
+exclude_dirs = ["tests", "*/tests"]
+tests = ["B201"]
+skips = ["B101", "B601", "B301"]
+
+
+
+# commitizen configuration
+# --------------------
+[tool.commitizen]
+name = "cz_conventional_commits" # commit rule chosen
+version = "0.0.1"
+version_files = [
+    "pyproject.toml:version",
+    "openapi_spec.json:version"
+]
+update_changelog_on_bump = true
+changelog_file = "CHANGELOG.md"
+changelog_incremental = true
+changelog_start_rev = "0.0.1"
+tag_format = "$major.$minor.$patch$prerelease"
+style = [
+    ["qmark", "fg:#ff9d00 bold"],
+    ["question", "bold"],
+    ["answer", "fg:#ff9d00 bold"],
+    ["pointer", "fg:#ff9d00 bold"],
+    ["highlighted", "fg:#ff9d00 bold"],
+    ["selected", "fg:#cc5454"],
+    ["separator", "fg:#cc5454"],
+    ["instruction", ""],
+    ["text", ""],
+    ["disabled", "fg:#858585 italic"]
+]
