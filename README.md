@@ -1,10 +1,7 @@
 # `Viper Boot` User Guide
 
-[![PyPI](https://img.shields.io/pypi/v/viper_boot.svg)][pypi status]
-[![Status](https://img.shields.io/pypi/status/viper_boot.svg)][pypi status]
-[![Python Version](https://img.shields.io/pypi/pyversions/viper_boot)][pypi status]
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/versions)
 
-[![Read the documentation at https://viper_boot.readthedocs.io/](https://img.shields.io/readthedocs/viper_boot/latest.svg?label=Read%20the%20Docs)][read the docs]
 [![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)][documentation]
 [![Codecov](https://codecov.io/gh/ammar-khan/viper_boot/branch/main/graph/badge.svg)][codecov]
 
@@ -12,10 +9,9 @@
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)][commitizen]
 
+![PyPI - License](https://img.shields.io/pypi/l/licen)
 
-[documentation]: http://www.google.com
-[pypi status]: http://www.google.com
-[read the docs]: http://www.google.com
+[documentation]: https://ammar-khan.github.io/viper-boot/index.html
 [codecov]: http://www.google.com
 [pre-commit]: https://pre-commit.com/
 [black]: https://black.readthedocs.io/
@@ -48,11 +44,11 @@ Design with gang of four pattern and 12 factor methodology with object oriented 
 
 ## Usage
 
-Please see the [Usage](https://effective-potato-e52393bc.pages.github.io/usage.html) for details.
+Please see the [Usage](https://ammar-khan.github.io/viper-boot/usage.html) for details.
 
 ## License
 
-This project is under the terms of the [license](https://effective-potato-e52393bc.pages.github.io/license.html).
+This project is under the terms of the [license](https://ammar-khan.github.io/viper-boot/license.html).
 
 ## Specifications, patterns, tools and frameworks used
 - [Object-Oriented Programming Paradigm](https://en.wikipedia.org/wiki/Object-oriented_programming)
